@@ -1,5 +1,3 @@
-# ACF Wysiwyg Azerty Field
+# Custom WYSIWYG EDITOR for ACF
 
-Welcome to the Advanced Custom Fields Wysiwyg Azerty repository on Github.
-
-EXTENDED_DESCRIPTION
+Made by Azerty Consulting
