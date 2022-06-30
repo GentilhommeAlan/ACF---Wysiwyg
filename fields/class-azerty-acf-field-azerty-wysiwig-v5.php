@@ -156,11 +156,15 @@ class azerty_acf_field_wysiwyg_azerty extends acf_field {
 		*  Create a simple text input using the 'font_size' setting.
 		*/
 		
+		$name = $field['name'];
+		$new = array("", "");
+		$old   = array("[", "]");
+		$name = str_replace($old,$new,$name);
 		?>
-		<div id="editor_<?php echo $field['key'] ?>" data-style="<?php echo $field['style_text'] ?>" data-title="<?php echo $field['title_text'] ?>">
+		<div id="editor_<?php echo $name ?>" data-style="<?php echo $field['style_text'] ?>" data-title="<?php echo $field['title_text'] ?>">
 			<?php echo $field['value'] ?>
 		</div>
-		<textarea id="<?php echo $field['name']  ?>"  rows="5" class="<?php echo $field['key'] ?>" name="<?php echo $field['name'] ?> " style="display:none" > <?php echo $field['value'] ?></textarea>
+		<textarea id="<?php echo $name ?>"  rows="5" class="<?php echo $name ?>" name="<?php echo $field['name'] ?> " style="display:none" > <?php echo $field['value'] ?></textarea>
 		<?php
 	}
 	

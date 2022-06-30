@@ -14,7 +14,10 @@
 	*/
 	
 	function initialize_field( $field ) {
-		const key = $($field[0]).attr('data-key');
+		const elementHML = $($field[0]).find('textarea')[0];
+		const key = $(elementHML).attr('id');
+		console.log(key)
+		// const key = $($field[0]).attr('data-key');
 		var toolbarOptions = [];
 		
 		// ADD STYLE
@@ -38,22 +41,22 @@
 			var new_content = quill.root.innerHTML;
 
 			// Remove HTML
-			new_content = new_content.replace('<p>', '');
-			new_content = new_content.replace('<h1>', '');
-			new_content = new_content.replace('<h2>', '');
-			new_content = new_content.replace('<h3>', '');
-			new_content = new_content.replace('<h4>', '');
-			new_content = new_content.replace('<h5>', '');
-			new_content = new_content.replace('<h6>', '');
+			new_content = new_content.replaceAll('<p>', '');
+			new_content = new_content.replaceAll('<h1>', '');
+			new_content = new_content.replaceAll('<h2>', '');
+			new_content = new_content.replaceAll('<h3>', '');
+			new_content = new_content.replaceAll('<h4>', '');
+			new_content = new_content.replaceAll('<h5>', '');
+			new_content = new_content.replaceAll('<h6>', '');
 
 			// Replace by BR
-			new_content = new_content.replace('</p>', '</br>');
-			new_content = new_content.replace('</h1>', '</br>');
-			new_content = new_content.replace('</h2>', '</br>');
-			new_content = new_content.replace('</h3>', '</br>');
-			new_content = new_content.replace('</h4>', '</br>');
-			new_content = new_content.replace('</h5>', '</br>');
-			new_content = new_content.replace('</h6>', '</br>');
+			new_content = new_content.replaceAll('</p>', '</br>');
+			new_content = new_content.replaceAll('</h1>', '</br>');
+			new_content = new_content.replaceAll('</h2>', '</br>');
+			new_content = new_content.replaceAll('</h3>', '</br>');
+			new_content = new_content.replaceAll('</h4>', '</br>');
+			new_content = new_content.replaceAll('</h5>', '</br>');
+			new_content = new_content.replaceAll('</h6>', '</br>');
 
 
 			console.log(new_content);
