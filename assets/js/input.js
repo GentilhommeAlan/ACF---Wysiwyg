@@ -53,7 +53,8 @@
 
 		// ADD Style title
 		if($('#editor_' + key).data('title')){
-			quill.format('header', '1');
+			const editorContent = $('#editor_' + key).find('.ql-editor')[0];
+			$(editorContent).addClass('isTitle');
 		}
 
 		// Define delta and disable paste with style

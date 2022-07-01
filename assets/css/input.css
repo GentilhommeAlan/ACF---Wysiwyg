@@ -1,3 +1,6 @@
 .noneElement{
 	display: none!important;
 }
+.ql-editor.isTitle p, .ql-editor.isTitle h1, .ql-editor.isTitle h2, .ql-editor.isTitle h3, .ql-editor.isTitle h4, .ql-editor.isTitle h5,.ql-editor.isTitle h6{
+    font-size: 30px!important;
+}
