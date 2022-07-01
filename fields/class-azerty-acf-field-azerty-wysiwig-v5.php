@@ -54,6 +54,7 @@ class azerty_acf_field_wysiwyg_azerty extends acf_field {
 		$this->defaults = array(
 			'style_text'	=> 1,
 			'title_text'	=> 0,
+			'heading'	=> 0,
 		);
 		
 		
@@ -119,6 +120,13 @@ class azerty_acf_field_wysiwyg_azerty extends acf_field {
 			'type'			=> 'true_false',
 			'ui'			=> 1,	
 		));
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Add heading','acf-wysiwyg-azerty'),
+			'instructions'	=> __('Add heading information and return this ','acf-wysiwyg-azerty'),
+			'name'			=> 'heading',
+			'type'			=> 'true_false',
+			'ui'			=> 1,	
+		));
 
 	}
 	
@@ -162,7 +170,7 @@ class azerty_acf_field_wysiwyg_azerty extends acf_field {
 		$name = str_replace($old,$new,$name);
 		?>
 		
-		<div id="editor_<?php echo $name ?>" data-style="<?php echo $field['style_text'] ?>" data-title="<?php echo $field['title_text'] ?>">
+		<div id="editor_<?php echo $name ?>" data-style="<?php echo $field['style_text'] ?>" data-title="<?php echo $field['title_text'] ?>" data-heading="<?php echo $field['heading'] ?>">
 			<?php echo $field['value'] ?>
 		</div>
 		<textarea id="<?php echo $name ?>"  rows="5" class="<?php echo $name ?>" name="<?php echo $field['name'] ?> " style="display:none" > <?php echo $field['value'] ?></textarea>

@@ -18,30 +18,20 @@
 		// Define Editor textArea content
 		const elementHML = $($field[0]).find('textarea')[0];
 		const key = $(elementHML).attr('id');
-		var toolbarOptions = [
-			// ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-			// ['blockquote', 'code-block'],
-		  
-			// [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-			// [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-			// [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-			// [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-			// [{ 'direction': 'rtl' }],                         // text direction
-		  
-			// [{ 'size': ['test', false, 'large', 'huge'] }],  // custom dropdown
-			// [{ 'header': [1, 2, 3, false] }],
-		  
-			// [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-			// [{ 'font': [] }],
-			// [{ 'align': [] }],
-		  
-			['clean']     
-		];
+		var toolbarOptions = [];
 		
+		// ADD heading configuration
+		if($('#editor_' + key).data('heading')){
+			toolbarOptions.push([{ 'header': [1, 2, 3, false] }]);
+		}
+
 		// ADD STYLE
 		if($('#editor_' + key).data('style')){
 			toolbarOptions.push(['bold', 'italic', 'underline', 'strike', 'link', 'size']);
 		}
+
+		// Add clean style option
+		toolbarOptions.push(['clean']);
 
 		// Initialize Quill Editor
 		var quill = new Quill('#editor_' + key , {
@@ -66,22 +56,24 @@
 
 		quill.on('text-change', function(delta, oldDelta, source) {
 			var new_content = quill.root.innerHTML;
-			// Remove HTML
-			new_content = new_content.replaceAll('<p>', '');
-			new_content = new_content.replaceAll('<h1>', '');
-			new_content = new_content.replaceAll('<h2>', '');
-			new_content = new_content.replaceAll('<h3>', '');
-			new_content = new_content.replaceAll('<h4>', '');
-			new_content = new_content.replaceAll('<h5>', '');
-			new_content = new_content.replaceAll('<h6>', '');
-			// Replace by BR
-			new_content = new_content.replaceAll('</p>', '</br>');
-			new_content = new_content.replaceAll('</h1>', '</br>');
-			new_content = new_content.replaceAll('</h2>', '</br>');
-			new_content = new_content.replaceAll('</h3>', '</br>');
-			new_content = new_content.replaceAll('</h4>', '</br>');
-			new_content = new_content.replaceAll('</h5>', '</br>');
-			new_content = new_content.replaceAll('</h6>', '</br>');
+			if(!$('#editor_' + key).data('heading')){
+				// Remove HTML
+				new_content = new_content.replaceAll('<p>', '');
+				new_content = new_content.replaceAll('<h1>', '');
+				new_content = new_content.replaceAll('<h2>', '');
+				new_content = new_content.replaceAll('<h3>', '');
+				new_content = new_content.replaceAll('<h4>', '');
+				new_content = new_content.replaceAll('<h5>', '');
+				new_content = new_content.replaceAll('<h6>', '');
+				// Replace by BR
+				new_content = new_content.replaceAll('</p>', '</br>');
+				new_content = new_content.replaceAll('</h1>', '</br>');
+				new_content = new_content.replaceAll('</h2>', '</br>');
+				new_content = new_content.replaceAll('</h3>', '</br>');
+				new_content = new_content.replaceAll('</h4>', '</br>');
+				new_content = new_content.replaceAll('</h5>', '</br>');
+				new_content = new_content.replaceAll('</h6>', '</br>');
+			}
 			// Add content to textarea for save value
 			$("." + key).val(new_content);
 		})		
