@@ -161,6 +161,7 @@ class azerty_acf_field_wysiwyg_azerty extends acf_field {
 		$old   = array("[", "]");
 		$name = str_replace($old,$new,$name);
 		?>
+		
 		<div id="editor_<?php echo $name ?>" data-style="<?php echo $field['style_text'] ?>" data-title="<?php echo $field['title_text'] ?>">
 			<?php echo $field['value'] ?>
 		</div>
