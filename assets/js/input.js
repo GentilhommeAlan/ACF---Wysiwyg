@@ -75,7 +75,8 @@
 				new_content = new_content.replaceAll('</h6>', '</br>');
 			}
 			// Add content to textarea for save value
-			$("." + key).val(new_content);
+			// $("." + key).val(new_content);
+			document.getElementById(key).value = new_content;
 		})		
 	}
 	
