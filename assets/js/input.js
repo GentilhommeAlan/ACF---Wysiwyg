@@ -76,6 +76,9 @@
 			}
 			// Add content to textarea for save value
 			// $("." + key).val(new_content);
+			if(new_content == '<br></br>'){
+				new_content = '';
+			}
 			document.getElementById(key).value = new_content;
 		})		
 	}
